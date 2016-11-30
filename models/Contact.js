@@ -21,6 +21,8 @@ Contact.schema.virtual('content.full').get(function () {
 	return this.content.extended || this.content.brief;
 });
 
+Contact.relationship({ path: 'comments', ref: 'ContactComment', refPath: 'Contact' });
+
 Contact.track = true;
 Contact.defaultColumns = 'name, state|20%, author|20%, publishedDate|20%';
 Contact.register();
