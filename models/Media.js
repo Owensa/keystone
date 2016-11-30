@@ -25,5 +25,5 @@ Media.add({
 
 Media.track = true;
 Media.defaultSort = 'name';
-Media.defaultColumns = 'name, content, photos, previewImgUrl, imgSrc';
+Media.defaultColumns = 'name, bgImgUrl, psTitle';
 Media.register();

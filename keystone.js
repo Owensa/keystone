@@ -44,11 +44,12 @@ keystone.set('locals', {
 keystone.set('routes', require('./routes'));
 
 keystone.set('nav', {
+	'Views': 'Views'
 	'Carousel': 'Carousel',
 	'Timeline': 'Timeline',
 	'Music': 'Music',
-	'media': ['media', 'media-categories'],
-	'Contact': ['Contact', 'ContactCategories'],
+	'media': 'media',
+	'Contact': 'Contact'
 	'users': 'users',
 });
 
