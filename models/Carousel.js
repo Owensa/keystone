@@ -1,19 +1,19 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
-var TimelineYAxis = new keystone.List('TimelineYAxis', {
+var Carousel = new keystone.List('Carousel', {
 	autokey: { from: 'name', path: 'key', unique: true },
 	plural: 'Albums',
 	singular: 'Album',
 });
 
-TimelineYAxis.add({
+Carousel.add({
 	name: { type: String, required: true },
 	publishedDate: { type: Types.Date, default: Date.now },
 	images: { type: Types.CloudinaryImages },
 });
 
-TimelineYAxis.track = true;
-TimelineYAxis.defaultSort = 'name';
-TimelineYAxis.defaultColumns = 'name, publishedDate';
-TimelineYAxis.register();
+Carousel.track = true;
+Carousel.defaultSort = 'name';
+Carousel.defaultColumns = 'name, publishedDate';
+Carousel.register();

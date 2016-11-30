@@ -1,41 +1,28 @@
-const keystone = require('keystone');
-const middleware = require('./middleware');
-const importRoutes = keystone.importer(__dirname);
+var keystone = require('keystone');
+var Types = keystone.Field.Types;
 
-keystone.pre('routes', function (req, res, next) {
-	res.locals.navLinks = [
-		{ label: 'Home', key: 'home', href: '/' },
-		{ label: 'Blog', key: 'blog', href: '/blog' },
-		{ label: 'Gallery', key: 'gallery', href: '/gallery' },
-		{ label: 'Contact', key: 'contact', href: '/contact' },
-	];
-	res.locals.user = req.user;
-	next();
+var Contact = new keystone.List('Contact', {
+	autokey: { from: 'name', path: 'key', unique: true },
 });
 
-keystone.pre('render', middleware.theme);
-keystone.pre('render', middleware.flashMessages);
-
-keystone.set('404', function (req, res, next) {
-	res.status(404).render('errors/404');
+Contact.add({
+	name: { type: String, required: true },
+	author: { type: Types.Relationship, ref: 'User', index: true },
+	publishedDate: { type: Types.Date, index: true },
+	image: { type: Types.CloudinaryImage },
+	content: {
+		brief: { type: Types.Html, wysiwyg: true, height: 150 },
+		extended: { type: Types.Html, wysiwyg: true, height: 400 },
+	},
+	categories: { type: Types.Relationship, ref: 'ContactCategories', many: true },
 });
 
-// Load Routes
-var routes = {
-	download: importRoutes('./download'),
-	views: importRoutes('./views'),
-};
+Contact.schema.virtual('content.full').get(function () {
+	return this.content.extended || this.content.brief;
+});
 
-exports = module.exports = function (app) {
+Contact.relationship({ path: 'comments', ref: 'ContactComment', refPath: 'Contact' });
 
-	// Views
-	app.get('/', routes.views.index);
-	app.get('/blog/:category?', routes.views.blog);
-	app.all('/blog/post/:post', routes.views.post);
-	app.get('/gallery', routes.views.gallery);
-	app.all('/contact', routes.views.contact);
-
-	// Downloads
-	app.get('/download/users', routes.download.users);
-
-}
+Contact.track = true;
+Contact.defaultColumns = 'name, state|20%, author|20%, publishedDate|20%';
+Contact.register();
