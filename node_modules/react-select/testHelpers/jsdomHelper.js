@@ -6,7 +6,7 @@ module.exports = function (html) {
 
 	var jsdom = require('jsdom').jsdom;
 	global.document = jsdom(html || '');
-	global.window = global.document.defaultView;
+	global.window = global.document.parentWindow;
 	global.navigator = {
 		userAgent: 'JSDOM'
 	};
