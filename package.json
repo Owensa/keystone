@@ -1,0 +1,22 @@
+{
+  "name": "victoria-justice-cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "keystone.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "victoria",
+    "justice",
+    "keystone",
+    "content",
+    "management",
+    "system"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "keystone": "^4.0.0-beta.1"
+  }
+}
