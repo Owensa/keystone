@@ -12,7 +12,7 @@ keystone.init({
 	'views': 'templates/views',
 	'view engine': 'jade',
 
-	'module root': '/'
+	'module root': '/keystone',
 	'auto update': true,
 	'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://heroku_z28h7plc:i3tr2ih91ekgn9cu6042k6inun@ds113628.mlab.com:13628/heroku_z28h7plc',
 	'cloudinary config': 'cloudinary://427439183981365:6nhiIF1IPezQbDx9_LQoHIjnEPc@hyt7folyc',
@@ -45,7 +45,7 @@ keystone.set('locals', {
 keystone.set('routes', require('./routes'));
 
 keystone.set('nav', {
-	'Views': 'Views'
+	'Views': 'Views',
 	'Carousel': 'Carousel',
 	'Timeline': 'Timeline',
 	'Music': 'Music',

@@ -7,22 +7,19 @@ var Contact = new keystone.List('Contact', {
 
 Contact.add({
 	name: { type: String, required: true },
-	author: { type: Types.Relationship, ref: 'User', index: true },
-	publishedDate: { type: Types.Date, index: true },
-	image: { type: Types.CloudinaryImage },
+	path: { type: String, required: true },
 	content: {
-		brief: { type: Types.Html, wysiwyg: true, height: 150 },
-		extended: { type: Types.Html, wysiwyg: true, height: 400 },
-	},
-	categories: { type: Types.Relationship, ref: 'ContactCategories', many: true },
+		bgImgUrl: { type: Types.Html, wysiwyg: true, height: 150 },
+		contacts: { type: Types.Html, wysiwyg: true, height: 400 },
+		title: { type: String },
+		lines: { type: String },
+		emails: { type: String }
 });
 
 Contact.schema.virtual('content.full').get(function () {
 	return this.content.extended || this.content.brief;
 });
 
-Contact.relationship({ path: 'comments', ref: 'ContactComment', refPath: 'Contact' });
-
 Contact.track = true;
-Contact.defaultColumns = 'name, state|20%, author|20%, publishedDate|20%';
+Contact.defaultColumns = 'name, content, path';
 Contact.register();
