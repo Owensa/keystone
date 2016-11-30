@@ -9,23 +9,18 @@ var Media = new keystone.List('Media', {
 
 Media.add({
 	name: { type: String, required: true },
-    content: { 
-        bgImgUrl:  { type: String },
-        title: { type: String }, 
-        catalog: { 
-            photos: {
-                previewImgUrl: { type: String },
-                items: {
-                    imgSrc: { type: Types.CloudinaryImage },
-                    psTitle: { type: String },
-                 }, 
-            },         
-        }, 
-        videos: {
-            previewImgUrl: { type: String },
-            youtubeIDS: { initial: false },
-        }     
-    }
+  content: { type: String },
+  bgImgUrl:  { type: String },
+  title: { type: String },
+  catalog: { type: String},
+  photos: {type: Types.CloudinaryImage  },
+  previewImgUrl: { type: String },
+  items: { type: String },
+  imgSrc: { type: Types.CloudinaryImage },
+  psTitle: { type: String },
+  videos: { type: String },
+  previewImgUrl: { type: String },
+  youtubeIDS: { type: String },
 });
 
 Media.track = true;
