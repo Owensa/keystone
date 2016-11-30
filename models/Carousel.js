@@ -9,10 +9,10 @@ var Carousel = new keystone.List('Carousel', {
 Carousel.add({
 	name: { type: String, required: true },
 	uploadedAt: { type: Types.Date, default: Date.now },
-	images: { type: Types.CloudinaryImages },
+	image: { type: Types.CloudinaryImage },
 });
 
 Carousel.track = true;
 Carousel.defaultSort = 'name';
-Carousel.defaultColumns = 'name, uploadedAt';
+Carousel.defaultColumns = 'name, uploadedAt, image';
 Carousel.register();
