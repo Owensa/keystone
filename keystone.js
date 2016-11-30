@@ -48,12 +48,8 @@ keystone.set('nav', {
 	'Timeline': ['Timeline', 'TimelineXAxis', 'TimelineYAxis', ],
 	'Music': ['Music', 'MusicCategories', 'MusicTrack', 'MusicAlbum'],
 	'media': ['media', 'media-categories'],
-	'posts': ['posts', 'post-comments', 'post-categories'],
-	'galleries': 'galleries',
 	'Contact': ['Contact', 'ContactCategories'],
-	'enquiries': 'enquiries',
 	'users': 'users',
-	'field-tests': 'things'
 });
 
 keystone.start();
