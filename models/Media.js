@@ -3,13 +3,13 @@ var Types = keystone.Field.Types;
 
 var Media = new keystone.List('Media', {
 	autokey: { from: 'name', path: 'key', unique: true },
-	plural: 'Albums',
-	singular: 'Album',
+	plural: 'Photos',
+	singular: 'Photo',
 });
 
 Media.add({
 	name: { type: String, required: true },
-  content: { type: String },
+  content: { type: String, },
   bgImgUrl:  { type: String },
   title: { type: String },
   catalog: { type: String},
@@ -25,5 +25,5 @@ Media.add({
 
 Media.track = true;
 Media.defaultSort = 'name';
-Media.defaultColumns = 'name, publishedDate';
+Media.defaultColumns = 'name, content, photos, previewImgUrl, imgSrc';
 Media.register();
