@@ -46,7 +46,7 @@ keystone.set('routes', require('./routes'));
 keystone.set('nav', {
 	'Carousel': 'Carousel',
 	'Timeline': 'Timeline',
-	'Music': ['Music', 'MusicCategories', 'MusicTrack', 'MusicAlbum'],
+	'Music': 'Music',
 	'media': ['media', 'media-categories'],
 	'Contact': ['Contact', 'ContactCategories'],
 	'users': 'users',
