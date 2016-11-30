@@ -13,12 +13,5 @@ exports = module.exports = function (req, res) {
 				email: user.email
 			};
 		});
-
-		csv.stringify(users, function (err2, data) {
-			if (err2) { throw err; }
-
-			res.set({"Content-Disposition": "attachment; filename=\"users.csv\""});
-			res.send(data);
-		});
 	});
 };

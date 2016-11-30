@@ -1,5 +1,5 @@
 var _ = require('lodash');
-
+var mongoose = require('mongoose');
 exports.theme = function (req, res, next) {
 	if (req.query.theme) {
 		req.session.theme = req.query.theme;

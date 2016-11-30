@@ -10,7 +10,7 @@ module.exports = function (done) {
 		email: 'admin@wethem.us',
 		password: 'wethemus',
 		isAdmin: true,
-		isProtected: true,
+		isProtected: false,
 	})
 	.save(done);
 };
