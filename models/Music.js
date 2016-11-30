@@ -3,17 +3,18 @@ var Types = keystone.Field.Types;
 
 var Music = new keystone.List('Music', {
 	autokey: { from: 'name', path: 'key', unique: true },
-	plural: 'Albums',
-	singular: 'Album',
+	plural: 'Music',
+	singular: 'Music',
 });
 
 Music.add({
 	name: { type: String, required: true },
-	publishedDate: { type: Types.Date, default: Date.now },
-	images: { type: Types.CloudinaryImages },
+	path: { type: String, required: true },
+	content: { type: String },
+	bgImgUrl: { type Types.CloudinaryImages}
 });
 
 Music.track = true;
 Music.defaultSort = 'name';
-Music.defaultColumns = 'name, publishedDate';
+Music.defaultColumns = 'name, content, bgImgUrl';
 Music.register();
