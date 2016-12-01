@@ -49,8 +49,6 @@ keystone.set('nav', {
 	'Carousel': 'Carousel',
 	'Timeline': 'Timeline',
 	'Music': 'Music',
-	'Media': 'Media',
-	'Contact': 'Contact',
 	'Users': 'Users',
 	'Social': 'Social'
 });
