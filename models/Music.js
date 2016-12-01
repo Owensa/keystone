@@ -9,9 +9,9 @@ var Music = new keystone.List('Music', {
 
 Music.add({
 	name: { type: String, required: true },
-	path: { type: String, required: true },
+	path: { type: String, required: false },
 	content: { type: String },
-	bgImgUrl: { type Types.CloudinaryImages}
+	bgImgUrl: { type: Types.CloudinaryImages}
 });
 
 Music.track = true;

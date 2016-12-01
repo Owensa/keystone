@@ -7,13 +7,13 @@ var Contact = new keystone.List('Contact', {
 
 Contact.add({
 	name: { type: String, required: true },
-	path: { type: String, required: true },
-	content: {
-		bgImgUrl: { type: Types.Html, wysiwyg: true, height: 150 },
-		contacts: { type: Types.Html, wysiwyg: true, height: 400 },
-		title: { type: String },
-		lines: { type: String },
-		emails: { type: String }
+	path: { type: String, required: false },
+	content: { type: String },
+	bgImgUrl: { type: Types.Html, wysiwyg: true, height: 150 },
+	contacts: { type: Types.Html, wysiwyg: true, height: 400 },
+	title: { type: String },
+	lines: { type: String },
+	emails: { type: String }
 });
 
 Contact.schema.virtual('content.full').get(function () {
