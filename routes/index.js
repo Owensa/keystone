@@ -1,17 +1,35 @@
-var keystone = require('keystone');
-var csv = require('csv');
-var User = keystone.list("User");
+var keystone = require('keystone'),
+    middleware = require('./middleware'),
+    importRoutes = keystone.importer(__dirname);
 
-exports = module.exports = function (req, res) {
-	User.model.find(function (err, results) {
-		if (err) { throw err; }
+// Common Middleware
+keystone.pre('routes', middleware.initErrorHandlers);
+keystone.pre('routes', middleware.initLocals);
+keystone.pre('render', middleware.flashMessages);
 
-		var users = results.map(function (user) {
-			return {
-				firstName: user.name.first,
-				lastName: user.name.last,
-				email: user.email
-			};
-		});
-	});
+// Handle 404 errors
+keystone.set('404', function(req, res, next) {
+    res.notfound();
+});
+
+// Handle other errors
+keystone.set('500', function(err, req, res, next) {
+    var title, message;
+    if (err instanceof Error) {
+        message = err.message;
+        err = err.stack;
+    }
+    res.err(err, title, message);
+});
+
+// Load Routes
+var routes = {
+    views: importRoutes('./views')
 };
+
+// Bind Routes
+exports = module.exports = function(app) {
+
+    app.get('/', routes.views.index);
+
+}
