@@ -17,7 +17,6 @@ keystone.init({
 	'cloudinary config': 'cloudinary://427439183981365:6nhiIF1IPezQbDx9_LQoHIjnEPc@hyt7folyc',
 
 	'session': true,
-	'auth': true,
 	'user model': 'User',
 	'cookie secret': process.env.COOKIE_SECRET || '9c977427f76b88ba2f2b72fdd5d5e3f082beaf66e58709083d04bd84f670110a',
 
